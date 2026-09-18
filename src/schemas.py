@@ -2,7 +2,17 @@ from pydantic import BaseModel, ConfigDict
 
 class CreateUser(BaseModel):
     name: str
+    password: str
     email: str
+
+class LoginUser(BaseModel):
+    email: str
+    password: str
+
+
+class UpdatePassword(BaseModel):
+    old_password: str
+    new_password: str
 
 class UserResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
