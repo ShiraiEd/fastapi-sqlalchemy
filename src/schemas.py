@@ -1,9 +1,10 @@
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, EmailStr
+
 
 class CreateUser(BaseModel):
     name: str
     password: str
-    email: str
+    email: EmailStr
 
 class LoginUser(BaseModel):
     email: str

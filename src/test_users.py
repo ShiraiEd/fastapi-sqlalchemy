@@ -18,6 +18,10 @@ def test_signup_no_email_failure(client):
     response = client.post("/signup/", json={"name": "John", "password": "senha123"})
     assert response.status_code == 422
 
+def test_signup_email_malformed_failure(client):
+    response = client.post("/signup/", json={"name": "John", "email": "john.test.com", "password": "senha123"})
+    assert response.status_code==422
+
 def test_signup_no_password_failure(client):
     response = client.post("/signup/", json={"name": "John", "email": "john@test.com"})
     assert response.status_code == 422
